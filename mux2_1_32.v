@@ -1,0 +1,14 @@
+
+module mux2_1_32 (
+  input         sel,
+  input  [31:0] a,
+  input  [31:0] b,
+  output [31:0] y
+);
+  genvar i;
+  generate
+    for (i = 0; i < 32; i = i + 1) begin : MUX_BITS
+      mux2_1_bit m ( .sel(sel), .a(a[i]), .b(b[i]), .y(y[i]) );
+    end
+  endgenerate
+endmodule
